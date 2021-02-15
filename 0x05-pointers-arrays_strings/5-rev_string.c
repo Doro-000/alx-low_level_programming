@@ -10,11 +10,11 @@ void rev_string(char *s)
 {
 	int i = 0, length;
 
-	length = _strlen(s);
+	length = _strlen(s) - 1;
 
-	while (length && i < length)
+	while (length > i)
 	{
-		swap_int(s + (length - 1), s + i);
+		swap_char(s + length, s + i);
 		i++;
 		length--;
 	}
@@ -39,15 +39,15 @@ int _strlen(char *s)
 }
 
 /**
- * swap_int - swaps the values of two ints
+ * swap_char - swaps the values of two char
  * @a: value to be swapped
  * @b: value to be swapped
  *
  * Return: void
  **/
-void swap_int(int *a, int *b)
+void swap_char(char *a, char *b)
 {
-	int tmp;
+	char tmp;
 
 	tmp = *a;
 	*a = *b;
