@@ -11,10 +11,8 @@ int main (void)
 {
 	char c;
 	int x;
-	long t;
 
-	t = time(NULL);
-	srand(t);
+	srand(time(0));
         while (x <= 2645)
 	{
 		c = rand() % 128;
