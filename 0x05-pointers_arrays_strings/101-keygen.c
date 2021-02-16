@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define LIMIT 90
+#define LIMIT 89
 
 /**
  * main - entry point generates a random password
@@ -10,7 +10,7 @@
  */
 int main (void)
 {
-	char password[8], string[90] = "ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789~`!@#$%^&*()_-+={}[]:;<>,./?";
+	char password[8], string[LIMIT] = "ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789~`!@#$%^&*()_-+={}[]:;<>,./?";
 	int random_num, loop_var;
 	long t;
 
@@ -21,6 +21,7 @@ int main (void)
 		random_num = rand() % LIMIT;
 		password[loop_var] = string[random_num];
 	}
+	password[8] = '\0';
 	printf("%s\n", password);
 	return (0);
 }
