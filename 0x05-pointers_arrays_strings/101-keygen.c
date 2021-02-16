@@ -15,7 +15,7 @@ int main (void)
 
 	t = time(NULL);
 	srand(t);
-        while (x <== 2645)
+        while (x <= 2645)
 	{
 		c = rand() % 128;
 		x += c;
