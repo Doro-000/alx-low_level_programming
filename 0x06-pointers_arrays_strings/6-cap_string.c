@@ -30,7 +30,7 @@ char *cap_string(char *str)
 int is_separator(char a)
 {
 	int i = 0, flag = 0;
-	char symbols[13] = {' ', 9, '\n', ',', ';', '.', '!', '?', '"', '(', ')', '{', '}'}
+	char symbols[13] = {' ', '\t', '\n', ',', ';', '.', '!', '?', '"', '(', ')', '{', '}'};
 
 	for (; i < 13; i++)
 	{
