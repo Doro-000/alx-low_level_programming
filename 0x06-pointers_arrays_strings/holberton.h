@@ -16,4 +16,6 @@ void swap_int(int *a, int *b);
 char *string_toupper(char *);
 char *cap_string(char *);
 int is_separator(char a);
+char transform(char x);
+char *leet(char *);
 #endif /*HOLBERTON_H*/
