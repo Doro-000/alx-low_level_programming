@@ -18,4 +18,6 @@ char *cap_string(char *);
 int is_separator(char a);
 char transform(char x);
 char *leet(char *);
+char transform_2(char x);
+char *rot13(char*);
 #endif /*HOLBERTON_H*/
