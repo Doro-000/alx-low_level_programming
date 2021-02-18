@@ -14,7 +14,8 @@ char *cap_string(char *str)
 		str[i] -= 32;
 	while (str[i] != '\0')
 	{
-		if (is_separator(str[i]) && (str[i + 1] >= 'a' && str[i + 1] <= 'z'))
+		if (is_separator(str[i]) && (str[i + 1] >= 'a'
+					     && str[i + 1] <= 'z'))
 			str[i + 1] -= 32;
 		i++;
 	}
@@ -30,7 +31,8 @@ char *cap_string(char *str)
 int is_separator(char a)
 {
 	int i = 0, flag = 0;
-	char symbols[13] = {' ', '\t', '\n', ',', ';', '.', '!', '?', '"', '(', ')', '{', '}'};
+	char symbols[13] = {' ', '\t', '\n', ',', ';', '.', '!', '?', '"', '(',
+			    ')', '{', '}'};
 
 	for (; i < 13; i++)
 	{
