@@ -20,4 +20,5 @@ char transform(char x);
 char *leet(char *);
 char transform_2(char x);
 char *rot13(char*);
+void print_number(int n);
 #endif /*HOLBERTON_H*/
