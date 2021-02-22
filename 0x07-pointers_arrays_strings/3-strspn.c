@@ -19,6 +19,7 @@ unsigned int _strspn(char *s, char *accept)
 		match++;
 		i++;
 	}
+	return (match);
 }
 
 /**
