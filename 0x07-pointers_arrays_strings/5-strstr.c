@@ -11,7 +11,7 @@ char *_strstr(char *haystack, char *needle)
 {
 	int i = 0, flag = 0;
 
-	while (haystack[i] != '\0')
+	for (; haystack[i] != '\0'; i++)
 	{
 		int j = 0;
 
@@ -24,35 +24,16 @@ char *_strstr(char *haystack, char *needle)
 					flag = 0;
 					break;
 				}
-				flag = 1;
+				else
+					flag = 1;
 				j++;
 			}
 			if (flag)
 				break;
 		}
-		i++;
 	}
 	if (flag)
 		return (haystack + i);
-	else
-		return (NULL);
-}
-
-/**
- * _strchr - locates a char in a string
- * @s: string to be searched
- * @c: char to be checked
- *
- * Return: pointer to the first occurence of c in s
- */
-char *_strchr(char *s, char c)
-{
-	int i = 0;
-
-	for (; s[i] != c && s[i] != '\0'; i++)
-		;
-	if (s[i] == c)
-		return (s + i);
 	else
 		return (NULL);
 }
