@@ -25,6 +25,7 @@ char *_strstr(char *haystack, char *needle)
 					break;
 				}
 				flag = 1;
+				j++;
 			}
 			if (flag)
 				break;
