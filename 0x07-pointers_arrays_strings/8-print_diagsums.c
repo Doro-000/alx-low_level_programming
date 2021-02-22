@@ -8,7 +8,7 @@
  *
  * Return: void
  */
-void print_chessboard(int *a, int size)
+void print_diagsums(int *a, int size)
 {
 	int i = 0, sum_1 = 0, sum_2 = 0;
 
