@@ -3,6 +3,8 @@
 
 /**
  * main - entry point prints the product of 2 numbers
+ * @argc: size of argv
+ * @argv: array of pointers to command line args passed
  *
  * Return: 0
  */
