@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * main - entry point prints the product of 2 numbers
@@ -14,7 +15,7 @@ int main (int argc, char *argv[])
 	}
 	else
 	{
-		printf("%d\n", (*argv[1]) * (*argv[2]));
+		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
 		return (0);
 	}
 }
