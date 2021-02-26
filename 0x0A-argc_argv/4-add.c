@@ -3,6 +3,8 @@
 
 /**
  * main - entry point prints the sum of a variable amount of numbers
+ * @argc: size of argv
+ * @argv: array of pointers to command line args passed
  *
  * Return: 0
  */
