@@ -40,7 +40,7 @@ int is_valid(char *s)
 {
 	while (*s)
 	{
-		if (*s <= '0' && *s >= '9')
+		if (*s >= 'A' && *s <= 'Z' || *s >= 'a' && *s <= 'z')
 			return (0);
 		s++;
 	}
