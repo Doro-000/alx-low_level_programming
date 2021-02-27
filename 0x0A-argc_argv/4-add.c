@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "holberton.h"
 
 /**
  * main - entry point prints the sum of a variable amount of numbers
@@ -40,7 +41,7 @@ int is_valid(char *s)
 {
 	while (*s)
 	{
-		if (*s >= 'A' && *s <= 'Z' || *s >= 'a' && *s <= 'z')
+		if ((*s >= 'A' && *s <= 'Z') || (*s >= 'a' && *s <= 'z'))
 			return (0);
 		s++;
 	}
