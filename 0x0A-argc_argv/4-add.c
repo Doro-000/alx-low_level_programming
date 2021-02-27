@@ -12,12 +12,7 @@ int main(int argc, char *argv[])
 {
 	int sum = 0;
 
-	if (argc == 1)
-	{
-		printf("%d\n", sum);
-		return (1);
-	}
-	else
+	if (argc > 1)
 	{
 		while (--argc > 0)
 		{
@@ -29,7 +24,7 @@ int main(int argc, char *argv[])
 				return (1);
 			}
 		}
-		printf("%d\n", sum);
-		return (0);
 	}
+	printf("%d\n", sum);
+	return (0);
 }
