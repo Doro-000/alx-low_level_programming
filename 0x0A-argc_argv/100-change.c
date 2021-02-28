@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	#define AMOUNT atoi(argv[1]);
 	change = get_change(coins, atoi(argv[1]), sizeof(coins) / sizeof(int));
 	printf("%d\n", change);
 	return (0);
@@ -33,7 +32,7 @@ int main(int argc, char *argv[])
  */
 int get_change(int coins[], int amount, int size)
 {
-	int table[SIZE][AMOUNT];
+	int table[SIZE][amount + 1];
 	int i, j;
 
 	if (amount < 0)
