@@ -38,7 +38,7 @@ int get_change(int coins[], int amount, int size)
 	table = (int **) malloc(sizeof(int *) * size);
 	for (i = 0; i < size; i++)
 		table[i] = (int *) malloc(sizeof(int) * amount + 1);
-	if (amount < 0)
+	if (amount <= 0)
 	{
 		return (0);
 	}
