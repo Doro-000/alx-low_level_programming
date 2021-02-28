@@ -70,5 +70,6 @@ int get_change(int coins[], int amount, int size)
 			}
 		}
 	}
+	free(table);
 	return (table[size - 1][amount]);
 }
