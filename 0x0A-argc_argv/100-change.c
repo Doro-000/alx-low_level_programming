@@ -14,10 +14,10 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf ("Error\n");
+		printf("Error\n");
 		return (1);
 	}
-	change = get_change (coins, atoi (argv[1]), sizeof(coins) / sizeof (int));
+	change = get_change(coins, atoi (argv[1]), sizeof(coins) / sizeof (int));
 	printf ("%d\n", change);
 	return(0);
 }
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
  */
 int get_change(int coins[], int amount, int size)
 {
-	int table [size] [amount + 1];
+	int table[size][amount + 1];
 	int i, j;
 
 	if (amount < 0)
@@ -41,7 +41,7 @@ int get_change(int coins[], int amount, int size)
 	}
 	for (i = 0; i < size; i++)
 	{
-		table [i] [0] = 0;
+		table[i][0] = 0;
 	}
 	for (i = 0; i < size; i++)
 	{
@@ -49,23 +49,23 @@ int get_change(int coins[], int amount, int size)
 		{
 			if (i > 0)
 			{
-				if (coins [i] > j)
+				if (coins[i] > j)
 				{
-					table [i] [j] = table [i - 1] [j];
+					table[i][j] = table[i - 1][j];
 				}
 				else
 				{
-					table [i] [j] = min (table [i - 1] [j], 1 + table [i] [j - coins [i]]);
+					table[i][j] = min(table[i - 1][j], 1 + table[i][j - coins [i]]);
 				}
 			}
 			else
 			{
-				if (coins [i] <= j)
-					table [i] [j] = 1 + table [i] [j - coins[i]];
+				if (coins[i] <= j)
+					table[i][j] = 1 + table[i][j - coins[i]];
 				else
-					table [i] [j] = j;
+					table[i][j] = j;
 			}
 		}
 	}
-	return(table [size - 1] [amount]);
+	return(table[size - 1][amount]);
 }
