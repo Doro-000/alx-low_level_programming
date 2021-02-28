@@ -30,9 +30,10 @@ int main(int argc, char *argv[])
  *
  * Return: the calculated result
  */
-int get_change(int coins[], int amount, int size)
+int get_change(int coins[], int a, int size)
 {
-	int table[size][amount + 1];
+	int amount = AMOUNT(a);
+	int table[SIZE][amount + 1];
 	int i, j;
 
 	if (amount < 0)
