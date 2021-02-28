@@ -9,6 +9,6 @@
 #define AMOUNT(x) (x)
 
 int is_valid(char *s);
-int get_change(int coins[], int amount, int size);
+int get_change(int coins[], int a, int size);
 
 #endif /*HOLBERTON_H*/
