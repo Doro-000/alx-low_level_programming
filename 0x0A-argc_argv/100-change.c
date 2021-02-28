@@ -32,9 +32,12 @@ int main(int argc, char *argv[])
  */
 int get_change(int coins[], int amount, int size)
 {
-	int table[SIZE][amount + 1];
+	int *table;
 	int i, j;
 
+	table = (int **) malloc(sizeof(int *) * size);
+	for (i = 0; i < size; i++)
+		arr[i] = (int *) malloc(sizeof(int) * amount + 1);
 	if (amount < 0)
 	{
 		return (0);
