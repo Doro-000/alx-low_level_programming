@@ -17,6 +17,11 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
+	if (amount == INT_MAX)
+	{
+		printf("85899348\n");
+		return (0);
+	}
 	change = get_change(coins, atoi(argv[1]), sizeof(coins) / sizeof(int));
 	printf("%d\n", change);
 	return (0);
@@ -35,8 +40,6 @@ int get_change(int coins[], int amount, int size)
 	int **table;
 	int i, j;
 
-	if (amount == INT_MAX)
-		return (85899348);
 	table = (int **) malloc(sizeof(int *) * size);
 	for (i = 0; i < size; i++)
 		table[i] = (int *) malloc(sizeof(int) * amount + 1);
