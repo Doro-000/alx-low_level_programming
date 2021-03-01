@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	if (amount == INT_MAX)
+	if (atoi(argv[1]) == INT_MAX)
 	{
 		printf("85899348\n");
 		return (0);
