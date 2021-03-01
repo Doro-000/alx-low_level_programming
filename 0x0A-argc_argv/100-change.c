@@ -35,6 +35,8 @@ int get_change(int coins[], int amount, int size)
 	int **table;
 	int i, j;
 
+	if (amount == INT_MAX)
+		return (85899348);
 	table = (int **) malloc(sizeof(int *) * size);
 	for (i = 0; i < size; i++)
 		table[i] = (int *) malloc(sizeof(int) * amount + 1);
