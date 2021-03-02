@@ -19,7 +19,7 @@ char *argstostr(int ac, char **av)
 	new_string = (char *) malloc(sum + 1);
 	if (new_string != NULL)
 	{
-		while (i < ac)
+		while (i <= ac)
 		{
 			for (; av[i][j] != '\0'; j++)
 				new_string[j] = av[i][j];
