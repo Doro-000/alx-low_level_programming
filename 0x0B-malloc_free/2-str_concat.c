@@ -19,7 +19,7 @@ char *str_concat(char *s1, char *s2)
 			new_string[i] = s1[i];
 		for (; j < size_2 && size_2; j++)
 			new_string[i + j + 1] = s2[j];
-		new_string[i + j + 1] = '\0';
+		new_string[i + j + 2] = '\0';
 	}
 	else
 		return (NULL);
