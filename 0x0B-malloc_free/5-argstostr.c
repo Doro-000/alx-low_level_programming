@@ -10,22 +10,24 @@
 char *argstostr(int ac, char **av)
 {
 	char *new_string = NULL;
-	int i = 0, j = 0;
+	int i = 0, j = 0, sum = 0;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	new_string = (char *) malloc(size_1 + size_2 + 1);
+	while (ac--)
+		sum += len(av[ac]);
+	new_string = (char *) malloc(sum + 1);
 	if (new_string != NULL)
 	{
-		for (; i < size_1; i++)
+		while (i < ac)
 		{
-			new_string[i] = s1[i];
+			for (; av[i][j] != '\0'; j++)
+				new_string[j] = av[i][j];
+			new_string[j] = '\n';
+			i++;
+			j++;
 		}
-		for (; j < size_2; j++)
-		{
-			new_string[i + j] = s2[j];
-		}
-		new_string[i + j] = '\0';
+		new_string[sum + 1] = '\0';
 	}
 	else
 	{
@@ -42,7 +44,7 @@ char *argstostr(int ac, char **av)
  */
 int len(char *str)
 {
-	int len = 0;
+	int len = 1;
 
 	if (str != NULL)
 	{
