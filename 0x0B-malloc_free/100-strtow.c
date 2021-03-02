@@ -1,30 +1,41 @@
-int main()
+char **strtow(char *str)
 {
-    char str[100];
-    char splitStrings[10][10]; //can store 10 words of 10 characters
-    int i,j,cnt;
- 
-    printf("Enter a string: ");
-    gets(str);
- 
-    j=0; cnt=0;
-    for(i=0;i<=(strlen(str));i++)
-    {
-	    if(str[i]==' '||str[i]=='\0')
-        {
-            splitStrings[cnt][j]='\0';
-            cnt++;  //for next word
-            j=0;    //for next word, init index to 0
-        }
-        else
-        {
-            splitStrings[cnt][j]=str[i];
-            j++;
-        }
-    }
-    printf("\nOriginal String is: %s",str);
-    printf("\nStrings (words) after split by space:\n");
-    for(i=0;i < cnt;i++)
-        printf("%s\n",splitStrings[i]);
-    return 0;
+	char **split;
+	int i,j,cnt;
+
+	j=0; 
+	cnt=0;
+	for(i = 0; i <= len(str); i++)
+	{
+		if((str[i] != ' ') && (str[i] != '\0'))
+		{
+			split[cnt][j] = str[i];
+			j++;
+		}
+		else if ((str[i] == ' ') && (i != 0) && (str[i - 1] != ' '))
+		{
+			split[cnt][j] = '\0';
+			cnt++;
+			j++;
+		}
+	}
+	return (split);
+}
+
+/**
+ * len - returns length of str
+ * @str: string to be counted
+ *
+ * Return: length of the string
+ */
+int len(char *str)
+{
+	int len = 0;
+
+	if (str != NULL)
+	{
+		while (str[len])
+			len++;
+	}
+	return (len);
 }
