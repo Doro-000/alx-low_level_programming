@@ -1,27 +1,31 @@
 #include "holberton.h"
 
 /**
- * str_concat - concatenates 2 strings
- * @s1: string 1
- * @s2: string 2
+ * alloc_grid -  returns a pointer to a 2 dimensional array of integers
+ * @width: width of the array
+ * @height: height of the array
  *
- * Return: pointer to the new string
+ * Return: pointer to the array
  */
-char *str_concat(char *s1, char *s2)
+int **alloc_grid(int width, int height)
 {
-	char *new_string;
-	int i = 0, j = 0, size_1 = len(s1), size_2 = len(s2);
-
-	new_string = malloc(sizeof(char) * (size_1 + size_2 + 1));
-	if (new_string != NULL)
+	int **array;
+	int i = 0, j = 0;
+	
+	if (width == 0 || height == 0)
+		return (NULL);
+	array = (int **) malloc(sizeof(int *) * height);
+	if (array != NULL)
 	{
-		for (; i <= size_1 && size_1; i++)
-			new_string[i] = s1[i];
-		for (; j <= size_2 && size_2; j++)
-			new_string[i + j] = s2[j];
-		new_string[i + j] = '\0';
+		for (; i < width; i++)
+			array[i] = (int *) malloc(sizeof(int) * width);
+		for (i = 0; i < height; i++)
+		{
+			for (; j <= width; j++)
+				array[i][j] = 0;
+		}
+		return (array);
 	}
 	else
 		return (NULL);
-	return (new_string);
 }
