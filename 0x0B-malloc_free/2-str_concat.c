@@ -10,19 +10,36 @@
 char *str_concat(char *s1, char *s2)
 {
 	char *new_string;
-	int i = 0, size_1, size_2;
+	int i = 0, j = 0, size_1 = len(s1), size_2 = len(s2);
 
-	s1 == NULL ? size_1 = 0 : 0;
-	s2 == NULL ? size_2 = 0 : 0;
-	if (size_1)
-		while 
-	array = malloc(sizeof(char) * (size_1 + size_2));
-	if (array != NULL)
+	new_string = malloc(sizeof(char) * (size_1 + size_2 + 1));
+	if (new_string != NULL)
 	{
-		for (; s1[])
-			array[size] = c;
+		for (; i <= size_1 && size_1; i++)
+			new_string[i] = s1[i];
+		for (; j <= size_2 && size_2; j++)
+			new_string[i + j] = s2[j];
+		new_string[i] = '\0';
 	}
 	else
 		return (NULL);
-	return (array);
+	return (new_string);
+}
+
+/**
+ * len - returns length of str
+ * @str: string to be counted
+ *
+ * Return: length of the string
+ */
+int len(char *str)
+{
+	int len = 0;
+	
+	if (str != NULL)
+	{
+		while(str[len])
+			len++;
+	}
+	return (len)
 }
