@@ -16,13 +16,19 @@ char *str_concat(char *s1, char *s2)
 	if (new_string != NULL)
 	{
 		for (; i < size_1; i++)
+		{
 			new_string[i] = s1[i];
+		}
 		for (; j < size_2; j++)
+		{
 			new_string[i + j + 1] = s2[j];
+		}
 		new_string[size_1 + size_2] = '\0';
 	}
 	else
+	{
 		return (NULL);
+	}
 	return (new_string);
 }
 
