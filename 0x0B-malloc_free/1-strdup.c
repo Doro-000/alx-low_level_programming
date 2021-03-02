@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * _strdup - allocates space in memory, which contains a copy of the string given
+ * _strdup - allocates space in memory, which contains a copy of the str
  * @str: pointer to the string to be copied to the allocated memory
  *
  * Return: pointer to the memory block
