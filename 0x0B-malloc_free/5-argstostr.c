@@ -10,7 +10,7 @@
 char *argstostr(int ac, char **av)
 {
 	char *new_string = NULL;
-	int i = 0, j = 0, sum = 0;
+	int i = 0, j, sum = 0, temp = 0;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
@@ -21,13 +21,13 @@ char *argstostr(int ac, char **av)
 	{
 		while (i <= ac)
 		{
-			for (; av[i][j] != '\0'; j++)
-				new_string[j] = av[i][j];
-			new_string[j] = '\n';
+			for (j = 0; av[i][j] != '\0'; j++)
+				new_string[j + temp] = av[i][j];
+			new_string[temp + j] = '\n';
 			i++;
-			j++;
+			temp = j + 1; 
 		}
-		new_string[sum + 1] = '\0';
+		new_string[temp] = '\0';
 	}
 	else
 	{
