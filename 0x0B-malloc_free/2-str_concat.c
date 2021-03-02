@@ -35,10 +35,10 @@ char *str_concat(char *s1, char *s2)
 int len(char *str)
 {
 	int len = 0;
-	
+
 	if (str != NULL)
 	{
-		while(str[len])
+		while (str[len])
 			len++;
 	}
 	return (len);
