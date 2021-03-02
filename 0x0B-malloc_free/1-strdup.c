@@ -21,6 +21,6 @@ char *_strdup(char *str)
 		block[i] = '\0';
 	}
 	else
-		return (NULL)
+		return (NULL);
 	return (block);
 }
