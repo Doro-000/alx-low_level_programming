@@ -22,12 +22,12 @@ char **strtow(char *str)
 				size++;
 			else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
 			{
-				split[j] = (char *) malloc(sizeof(char) * size);
+				split[j] = (char *) malloc(sizeof(char) * size + 1);
 				if (split[j] != NULL)
 				{
 					while (temp < size)
 					{
-						split[j][temp] = str[(i - size) + temp];
+						split[j][temp] = str[(i - (size + 1)) + temp];
 						temp++;
 					}
 					split[j][temp] = '\0';
