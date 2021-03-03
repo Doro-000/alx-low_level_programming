@@ -43,7 +43,7 @@ char **strtow(char *str)
 				}
 			}
 		}
-		split[words] = NULL;
+		split[words - 1] = NULL;
 		return (split);
 	}
 	else
