@@ -1,3 +1,9 @@
+/**
+* strtow - splits a string into words.
+* @str: string to be splitted
+*
+* Return: pointer to the array of splitted words
+*/
 char **strtow(char *str)
 {
 	char **split;
