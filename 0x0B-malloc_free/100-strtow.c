@@ -9,12 +9,11 @@
 char **strtow(char *str)
 {
 	char **split;
-	int i, j = 0, temp = 0;
-	int size = 0, words = num_words(str);
+	int i, j = 0, temp = 0, size = 0, words = num_words(str);
 
-	if (len(str) == 0)
+	if (words == 0)
 		return (NULL);
-	split = (char **) malloc(sizeof(char *) * words + 1);
+	split = (char **) malloc(sizeof(char *) * words);
 	if (split != NULL)
 	{
 		for (i = 0; i <= len(str); i++)
@@ -32,8 +31,7 @@ char **strtow(char *str)
 						temp++;
 					}
 					split[j][temp] = '\0';
-					size = 0;
-					temp = 0;
+					size = temp = 0;
 					j++;
 				}
 				else
@@ -45,7 +43,7 @@ char **strtow(char *str)
 				}
 			}
 		}
-		split[words + 1] = NULL;
+		split[words] = NULL;
 		return (split);
 	}
 	else
