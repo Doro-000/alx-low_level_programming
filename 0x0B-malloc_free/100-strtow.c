@@ -13,7 +13,7 @@ char **strtow(char *str)
 
 	if (words == 0)
 		return (NULL);
-	split = (char **) malloc(sizeof(*split) * words);
+	split = (char **) malloc(sizeof(*split) * words + 1);
 	if (split != NULL)
 	{
 		for (i = 0; i <= len(str); i++)
