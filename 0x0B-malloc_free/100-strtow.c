@@ -1,33 +1,82 @@
 char **strtow(char *str)
 {
 	char **split;
-	int i,j,cnt;
+	int i, j = 0, temp = 0;
+	int size = 0, words = num_words(str);
 
-	j=0; 
-	cnt=0;
-	for(i = 0; i <= len(str); i++)
+	split = (char **) malloc(sizeof(int *) * words + 1);
+	if (split != NULL)
 	{
-		if((str[i] != ' ') && (str[i] != '\0'))
+		for (i = 0; i <= len(str); i++)
 		{
-			split[cnt][j] = str[i];
-			j++;
+			if((str[i] != ' ') && (str[i] != '\0'))
+				size++;
+			else if ((str[i] == ' ') || (str[i] == '\0') && i && (str[i - 1] != ' '))
+			{
+				split[j] = (char *) malloc(sizeof(char) * size + 1);
+				if (split[j] != NULL)
+				{
+					while (temp < size)
+					{
+						split[j][temp] = str[(i - size) + temp];
+						temp++;
+					}
+					split[j][temp] = '\0';
+					size = 0;
+					temp = 0;
+					j++;
+				}
+				else
+				{
+					while (j-- >= 0)
+						free(split[j]);
+					free(split);
+					return(NULL);
+				}
+			}
 		}
-		else if ((str[i] == ' ') && (i != 0) && (str[i - 1] != ' '))
-		{
-			split[cnt][j] = '\0';
-			cnt++;
-			j++;
-		}
+		split[words + 1] = NULL;
+		return (split);
 	}
-	return (split);
+	else
+		return (NULL);
 }
 
 /**
- * len - returns length of str
- * @str: string to be counted
- *
- * Return: length of the string
- */
+* num_words- counts the number of words in str
+* @str: string to be used
+*
+* Return: number of words
+*/
+int num_words(char *str)
+{
+	int i = 0, words = 0;
+
+	while (i < len(str))
+	{
+		if((str[i] != ' ') && (str[i] != '\0'))
+		{
+			i++;
+		}
+		else if ((str[i] == ' ') && (i != 0) && (str[i - 1] != ' '))
+		{
+			words += 1;
+			i++;
+		}
+		else
+		{
+			i++;
+		}
+	}
+	return (words);
+}
+
+/**
+* len - returns length of str
+* @str: string to be counted
+*
+* Return: length of the string
+*/
 int len(char *str)
 {
 	int len = 0;
