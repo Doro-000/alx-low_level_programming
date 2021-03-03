@@ -9,7 +9,7 @@ char **strtow(char *str)
 	{
 		for (i = 0; i <= len(str); i++)
 		{
-			if((str[i] != ' ') && (str[i] != '\0'))
+			if ((str[i] != ' ') && (str[i] != '\0'))
 				size++;
 			else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
 			{
@@ -31,7 +31,7 @@ char **strtow(char *str)
 					while (j-- >= 0)
 						free(split[j]);
 					free(split);
-					return(NULL);
+					return (NULL);
 				}
 			}
 		}
@@ -54,7 +54,7 @@ int num_words(char *str)
 
 	while (i < len(str))
 	{
-		if((str[i] != ' ') && (str[i] != '\0'))
+		if ((str[i] != ' ') && (str[i] != '\0'))
 		{
 			i++;
 		}
