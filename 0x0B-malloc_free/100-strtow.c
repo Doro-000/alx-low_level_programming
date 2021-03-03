@@ -1,3 +1,5 @@
+#include "holberton.h"
+
 /**
 * strtow - splits a string into words.
 * @str: string to be splitted
@@ -10,9 +12,9 @@ char **strtow(char *str)
 	int i, j = 0, temp = 0;
 	int size = 0, words = num_words(str);
 
-	if (str == NULL || str == "")
+	if (len(str) == 0)
 		return (NULL);
-	split = (char **) malloc(sizeof(int *) * words + 1);
+	split = (char **) malloc(sizeof(char *) * words + 1);
 	if (split != NULL)
 	{
 		for (i = 0; i <= len(str); i++)
