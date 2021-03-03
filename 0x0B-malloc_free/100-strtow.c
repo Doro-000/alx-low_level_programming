@@ -10,6 +10,8 @@ char **strtow(char *str)
 	int i, j = 0, temp = 0;
 	int size = 0, words = num_words(str);
 
+	if (str == NULL || str == "")
+		return (NULL);
 	split = (char **) malloc(sizeof(int *) * words + 1);
 	if (split != NULL)
 	{
