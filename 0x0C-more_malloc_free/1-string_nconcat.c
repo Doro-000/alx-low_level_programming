@@ -34,6 +34,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	return (new_string);
 }
 
+
 /**
  * len - returns length of str
  * @str: string to be counted
