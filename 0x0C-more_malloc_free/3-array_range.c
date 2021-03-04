@@ -1,24 +1,24 @@
 #include "holberton.h"
 
 /**
- * _calloc - allocates memory using malloc, and initializes it to zero
- * @size: size of the memory block to be allocated
- * @nmemb: number of elements
+ * array_range - creates an array of integers
+ * @min: smallest number in the array
+ * @max: lagrest value in the array
  *
  * Return: pointer to the address of the memory block
  */
-void *_calloc(unsigned int nmemb, unsigned int size)
+int *array_range(int min, int max)
 {
-	void *block;
+	int *block;
 	int i;
 
-	if (nmemb == 0 || size == 0)
+	if (min > max)
 		return (NULL);
-	block = malloc(nmemb * size);
+	block = malloc(sizeof *block * (max + 1));
 	if (block != NULL)
 	{
-		for (i = 0; i < nmemb; i++)
-			*(int *)(block + i) = 0;
+		for (i = 0; i <= max; i++)
+			block[i] = i;
 		return (block);
 	}
 	else
