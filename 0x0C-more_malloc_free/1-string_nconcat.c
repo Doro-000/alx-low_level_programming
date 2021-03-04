@@ -1,17 +1,19 @@
 #include "holberton.h"
 
 /**
- * str_concat - concatenates 2 strings
+ * string_nconcat - concatenates 2 strings, takes the first n chars of s2
  * @s1: string 1
  * @s2: string 2
+ * @n: amount of chars to be used from s2
  *
  * Return: pointer to the new string
  */
-char *str_concat(char *s1, char *s2)
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *new_string = NULL;
-	int i = 0, j = 0, size_1 = len(s1), size_2 = len(s2);
+	char *new_string;
+	int i = 0, j = 0, size_1 = len(s1), size_2;
 
+	n < len(s2) ? (size_2 = n) : (size_2 = len(s2));
 	new_string = (char *) malloc(size_1 + size_2 + 1);
 	if (new_string != NULL)
 	{
