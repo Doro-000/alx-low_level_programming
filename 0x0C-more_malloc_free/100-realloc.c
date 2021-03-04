@@ -27,25 +27,13 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	else
 	{
-		temp_block = malloc(old_size);
+		temp_block = malloc(new_size);
 		if (temp_block != NULL)
 		{
-			for (i = 0; i < old_size; i++)
-				*((char *) temp_block + i) = *((char *) ptr + i);
+			for (i = 0; i < min(old_size, new_size); i++)
+				*((char *)temp_block + i) = *((char *) ptr + i);
 			free(ptr);
-			ptr = malloc(new_size);
-			if (ptr != NULL)
-			{
-				for (i = 0; i < min(old_size, new_size); i++)
-					*((char *) ptr + i) = *((char *) temp_block + i);
-				free(temp_block);
-				return (ptr);
-			}
-			else
-			{
-				free(temp_block);
-				return (NULL);
-			}
+			return (temp_block);
 		}
 		else
 			return (NULL);
