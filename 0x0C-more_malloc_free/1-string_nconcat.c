@@ -13,7 +13,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	char *new_string;
 	int i = 0, j = 0, size_1 = len(s1), size_2;
 
-	n < len(s2) ? (size_2 = n) : (size_2 = len(s2));
+	n < (unsigned int) len(s2) ? (size_2 = n) : (size_2 = len(s2));
 	new_string = (char *) malloc(size_1 + size_2 + 1);
 	if (new_string != NULL)
 	{
