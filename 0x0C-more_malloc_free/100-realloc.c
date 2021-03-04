@@ -36,7 +36,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 			ptr = malloc(new_size);
 			if (ptr != NULL)
 			{
-				for (i = 0; i <= min(old_size, new_size); i++)
+				for (i = 0; i < min(old_size, new_size); i++)
 					*((char *) ptr + i) = *((char *) temp_block + i);
 				free(temp_block);
 				return (ptr);
