@@ -35,6 +35,7 @@ void times_table(void)
 
 /**
  * len - counts the number of digits in a number
+ * @n: number to be used
  *
  * Return: returns the number of digits
  */
