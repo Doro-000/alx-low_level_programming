@@ -32,3 +32,22 @@ void times_table(void)
 		}
 	}
 }
+
+/**
+ * len - counts the number of digits in a number
+ *
+ * Return: returns the number of digits
+ */
+int len(int n)
+{
+	int out = 0;
+
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n \= 10;
+		out++;
+	}
+	return (out);
+}
