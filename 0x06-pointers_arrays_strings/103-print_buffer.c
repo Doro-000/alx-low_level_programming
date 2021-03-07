@@ -6,36 +6,36 @@
  * @size: size to be used
  *
  * Return: void
-*/
+ */
 void print_buffer(char *b, int size)
 {
-    int i = 0, temp, j, k;
+	int i = 0, temp, j, k;
 
-    while (i <= size)
-    {
-        printf("%08x: ", i);
-        for (j = i; j <= i + 9; j += 2)
-        {
-            if (j < size)
-                printf("%02x%02x ", b[j], b[j+1]);
-            else
-            {
-                while (j <= i + 9)
-                {
-                    printf("  ");
-                    j++;
-                }
-                printf("  ");
-            }
-        }
-        for (j = i; j <= i + 9 && j < size; j++)
-        {
-            if (b[j] >= 32 && b[j] <= 126)
-                printf("%c", b[j]);
-            else
-                printf(".");
-        }
-        printf("\n");
-        i += 10;
-    }
+	while (i <= size)
+	{
+		printf("%08x: ", i);
+		for (j = i; j <= i + 9; j += 2)
+		{
+			if (j < size)
+				printf("%02x%02x ", b[j], b[j+1]);
+			else
+			{
+				while (j <= i + 9)
+				{
+					printf("  ");
+					j++;
+				}
+				printf("  ");
+			}
+		}
+		for (j = i; j <= i + 9 && j < size; j++)
+		{
+			if (b[j] >= 32 && b[j] <= 126)
+				printf("%c", b[j]);
+			else
+				printf(".");
+		}
+		printf("\n");
+		i += 10;
+	}
 }
