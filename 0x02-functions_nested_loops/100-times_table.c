@@ -20,13 +20,13 @@ void print_times_table(int n)
 				if (i != 0)
 				{
 					_putchar(',');
-					for (x = len(product); x <= len(n * n); x++)
+					for (x = len(product); x <= 3; x++)
 						_putchar(' ');
 				}
 				if (product > 99)
 				{
 					_putchar(product / 100 + '0');
-					_putchar(product / 10 + '0');
+					_putchar(((product / 10) % 10) + '0');
 				}
 				else if (product > 9 && product <= 99)
 				{
