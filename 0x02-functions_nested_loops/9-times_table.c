@@ -7,24 +7,24 @@
  */
 void times_table(void)
 {
-	int i, j, product;
+	int i, j, product, x;
 
 	for (j = 0; j <= 9; j++)
 	{
 		for (i = 0; i <= 9; i++)
 		{
 			product = j * i;
+			if (i != 0)
+			{
+				_putchar(',');
+				for (x = len(product); x <= len(9 * 9); x++)
+					_putchar(' ');
+			}
 			if (product > 9)
 			{
 				_putchar(product / 10 + '0');
 			}
 			_putchar(product % 10 + '0');
-			if (i < 9)
-			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
-			}
 		}
 		if (j < 9)
 		{
@@ -46,7 +46,7 @@ int len(int n)
 		return (1);
 	while (n != 0)
 	{
-		n \= 10;
+		n /= 10;
 		out++;
 	}
 	return (out);
