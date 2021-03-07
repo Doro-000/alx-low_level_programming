@@ -8,8 +8,7 @@
  */
 void print_times_table(int n)
 {
-	char i;
-	int j, product;
+	int j, i, product, x;
 
 	if (n <= 15 && n >= 0)
 	{
@@ -18,6 +17,12 @@ void print_times_table(int n)
 			for (i = 0; i <= n; i++)
 			{
 				product = j * i;
+				if (i != 0)
+				{
+					_putchar(',');
+					for (x = len(product); x <= len(n * n); x++)
+						_putchar(' ');
+				}
 				if (product > 99)
 				{
 					_putchar(product / 100 + '0');
@@ -28,18 +33,28 @@ void print_times_table(int n)
 					_putchar(product / 10 + '0');
 				}
 				_putchar(product % 10 + '0');
-				if (i < n)
-				{
-					_putchar(',');
-					_putchar(' ');
-					_putchar(' ');
-					_putchar(' ');
-				}
 			}
-			if (j < n)
-			{
-				_putchar(10);
-			}
+			_putchar(10);
 		}
 	}
+}
+
+/**
+ * len - counts the number of digits in a number
+ * @n: number to be used
+ *
+ * Return: returns the number of digits
+ */
+int len(int n)
+{
+	int out = 0;
+
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n /= 10;
+		out++;
+	}
+	return (out);
 }
