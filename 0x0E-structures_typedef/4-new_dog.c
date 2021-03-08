@@ -37,7 +37,7 @@ dog_t *new_dog(char *name, float age, char *owner)
  *
  * Return: the pointer to dest
  */
-char *_strcpy(char *dest, char *src)
+void *_strcpy(char *dest, char *src)
 {
 	int i = 0;
 
