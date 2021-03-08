@@ -25,7 +25,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		new_doggo->age = age;
 		new_doggo->owner = temp_owner;
 	}
-	else 
+	else
 		return (NULL);
 	return (new_doggo);
 }
