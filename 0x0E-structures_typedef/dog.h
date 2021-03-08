@@ -2,6 +2,7 @@
 #define HOLBERTON_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * struct dog - a structure representing a dog
