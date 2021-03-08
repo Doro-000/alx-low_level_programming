@@ -21,13 +21,13 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{
 		_strcpy(temp_name, name);
 		_strcpy(temp_owner, owner);
-		new_doggo.name = temp_name;
-		new_doggo.age = age;
-		new_doggo.owner = temp_owner;
+		new_doggo->name = temp_name;
+		new_doggo->age = age;
+		new_doggo->owner = temp_owner;
 	}
 	else 
 		return (NULL);
-	return (&new_doggo);
+	return (new_doggo);
 }
 
 /**
