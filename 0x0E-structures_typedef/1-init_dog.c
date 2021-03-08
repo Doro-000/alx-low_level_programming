@@ -11,27 +11,10 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	d->name = malloc(sizeof(*name) * (_strlen(name) + 1));
-	d->owner = malloc(sizeof(*owner) * (_strlen(owner) + 1));
-	d->name = name;
-	d->age = age;
-	d->owner = owner;
-}
-
-/**
- * _strlen - counts the length of a string
- * @s: string to  be counted
- *
- * Return: the length of the string
- */
-int _strlen(char *s)
-{
-	int length = 0, i = 0;
-
-	while (s[i] != '\0')
+	if (d != NULL)
 	{
-		length++;
-		i++;
+		d->name = name;
+		d->age = age;
+		d->owner = owner;
 	}
-	return (length);
 }
