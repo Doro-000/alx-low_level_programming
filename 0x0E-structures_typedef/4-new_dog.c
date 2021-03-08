@@ -10,7 +10,8 @@
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	char *temp_name, *temp_owner;
+	char *temp_name;
+	char *temp_owner;
 	dog_t *new_doggo;
 
 	temp_name = malloc(sizeof(*name) * _strlen(name));
