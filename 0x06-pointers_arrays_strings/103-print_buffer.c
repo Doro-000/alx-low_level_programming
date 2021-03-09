@@ -23,7 +23,7 @@ void print_buffer(char *b, int size)
 		for (j = i; j <= i + 9; j += 2)
 		{
 			if (j < size)
-				printf("%02x%02x ", b[j], b[j+1]);
+				printf("%02x%02x ", b[j], b[j + 1]);
 			else
 			{
 				while (j <= i + 10)
