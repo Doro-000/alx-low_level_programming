@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	unsigned char *f;
 	int i = 0, bytes;
-	
+
 	if (argc != 2)
 	{
 		printf("Error\n");
