@@ -11,7 +11,7 @@ int op_add(int a, int b)
 }
 
 /**
- * op_sum - subtracts 2 numbers
+ * op_sub - subtracts 2 numbers
  * @a: first number
  * @b: second number
  *
