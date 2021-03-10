@@ -9,7 +9,7 @@
  *
  * Return: 0 if successful, 98, 99 or 100 if not (depending on the issue)
  */
-int main(int argc, char *argv[]) 
+int main(int argc, char *argv[])
 {
 	int (*f)(int, int);
 	int result;
@@ -17,12 +17,12 @@ int main(int argc, char *argv[])
 	if (argc != 4)
 	{
 		printf("Error\n");
-		exit (98);
+		exit(98);
 	}
 	if ((argv[2] == '/' || argv[2] == '%') && atoi(argv[3]) == 0)
 	{
 		printf("Error\n");
-		exit (100);
+		exit(100);
 	}
 	f = get_op_func(argv[2]);
 	if (f)
@@ -34,6 +34,6 @@ int main(int argc, char *argv[])
 	else
 	{
 		printf("Error\n");
-		exit (99);
+		exit(99);
 	}
 }
