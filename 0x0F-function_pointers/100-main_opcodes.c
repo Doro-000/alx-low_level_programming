@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	bytes = atoi(argv[1]);
 	for (; i < bytes; i++)
 	{
-		printf("%2x ", *(f + i));
+		printf("%x ", (int)(*(f + i)) & (0x000000FF));
 	}
 	printf("\n");
 	return (0);
