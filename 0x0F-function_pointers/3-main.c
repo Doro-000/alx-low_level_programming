@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(100);
 	}
-	f = get_op_func(argv[2]);
+	f = get_op_func(argv[2][0]);
 	if (f)
 	{
 		result = f(atoi(argv[1]), atoi(argv[3]));
