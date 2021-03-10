@@ -27,7 +27,9 @@ int main(int argc, char *argv[])
 	bytes = atoi(argv[1]);
 	for (; i < bytes; i++)
 	{
-		printf("%02x ", *(f + i));
+		printf("%02x", *(f + i));
+		if (i != bytes - 1)
+			printf(" ");
 	}
 	printf("\n");
 	return (0);
