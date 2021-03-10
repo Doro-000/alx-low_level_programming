@@ -10,7 +10,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int (*f)(int, char **);
+	unsigned char *f;
 	int i = 0, bytes;
 	
 	if (argc != 2)
@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(2);
 	}
-	f = main;
+	f = (unsigned char *) main;
 	bytes = atoi(argv[1]);
 	for (; i < bytes; i++)
 	{
-		printf("%x ", (int)(*(f + i)) & (0x000000FF));
+		printf("%02x ", *(f + i));
 	}
 	printf("\n");
 	return (0);
