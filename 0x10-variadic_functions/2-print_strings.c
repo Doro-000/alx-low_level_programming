@@ -34,6 +34,12 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	va_end(params);
 }
 
+/**
+ * point_to_nil - change s to be "(nil)" if s is null
+ * @s: string to be used
+ *
+ * Return: pointer to @s
+ */
 char *point_to_nil(char *s)
 {
 	if (s == NULL)
