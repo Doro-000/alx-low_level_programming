@@ -20,13 +20,13 @@ void print_strings(const char *separator, const unsigned int n, ...)
 			if (i != n - 1)
 			{
 				if (separator != NULL)
-					printf("%s%s", point_to_nil(va_arg(params, char *)), separator);
+					printf("%s%s", make_nil(va_arg(params, char *)), separator);
 				else
-					printf("%s", point_to_nil(va_arg(params, char *)));
+					printf("%s", make_nil(va_arg(params, char *)));
 			}
 			else
 			{
-				printf("%s", point_to_nil(va_arg(params, char *)));
+				printf("%s", make_nil(va_arg(params, char *)));
 			}
 		}
 	}
@@ -40,7 +40,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
  *
  * Return: pointer to @s
  */
-char *point_to_nil(char *s)
+char *make_nil(char *s)
 {
 	if (s == NULL)
 		s = "(nil)";
