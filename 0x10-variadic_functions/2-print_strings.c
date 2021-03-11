@@ -35,7 +35,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 }
 
 /**
- * point_to_nil - change s to be "(nil)" if s is null
+ * make_nil - change s to be "(nil)" if s is null
  * @s: string to be used
  *
  * Return: pointer to @s
