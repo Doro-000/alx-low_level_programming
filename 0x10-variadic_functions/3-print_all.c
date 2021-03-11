@@ -13,7 +13,7 @@ void print_all(const char * const format, ...)
 	va_list params;
 
 	va_start(params, format);
-	while ((*(format + j) != '\0') && (format != NULL))
+	while (*(format + j) && format)
 	{
 		last_arg = count_format(format);
 		type = *(format + j);
