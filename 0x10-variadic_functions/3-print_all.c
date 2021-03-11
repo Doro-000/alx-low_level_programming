@@ -97,10 +97,10 @@ int count_format(const char * const format)
  */
 void print_comma(int j, int x)
 {
-  if (j != x)
-    {
-        printf(", ");
-    }
+	if (j != x)
+	{
+		printf(", ");
+	}
 }
 
 /**
