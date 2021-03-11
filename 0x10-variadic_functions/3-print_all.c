@@ -1,72 +1,91 @@
 #include "variadic_functions.h"
 
-/**
- * print_all - prints anything
- * @format: list of types of arguments passed to the function
- *
- * Return: void
- */
 void print_all(const char * const format, ...)
 {
-	int i = 0, j = 0;
-	void (*f)(void *x);
+	int i = 0, j = 0, last_arg;
+	char type;
 	va_list params;
-	typedef struct types_funcs
-	{
-		char type;
-		void (*func)(void *x);
-	} map;
-	map mappings[] = {
-		{'c', print_char},
-		{'i', print_int},
-		{'f', print_float},
-		{'s', print_str}
-	}
 
 	va_start(params, format);
-	while (*(format + j))
+	last_arg = filter_format(format);
+	while (*(format + j) != '\0')
 	{
-		if (*format == mappings[i].type)
+		type = *(format+j);
+		switch(type)
 		{
-			f = mappings[i].func;
-			f(var_args(params, void *));
-			j++;
-			i = 0;
-			continue;
-		}
-		i++;
-		if (i == 4)
-		{
-			i = 0;
-			j++;
-		}
-	}
+			case 'c':
+				printf("%c", va_arg(params, int));
+				print_comma(j, last_arg);
+				j++;
+				break;
+			case 'i':
+				printf("%d", va_arg(params, int));
+				print_comma(j, last_arg);
+				j++;
+				break;
+			case 'f':
+				printf("%f", va_arg(params, double));
+				print_comma(j, last_arg);
+				j++;
+				break;
+			case 's':
+				printf("%s", point_to_nil(va_arg(params, char *)));
+				print_comma(j, last_arg);
+				j++;
+				break;
+			default:
+				j++;
+			break;
+		}	
+	}	
 	printf("\n");
 	va_end(params);
 }
 
-
-void print_char(void *x)
+int filter_format(const char * const format)
 {
-	printf("%c", *(char *)x);
-}
-
-void print_int(void *x)
-{
-	printf("%d", *(int *)x);
-}
-
-void print_float(void *x)
-{
-	printf("%f", *(float *)x);
-}
-
-void print_str(void *x)
-{
-	while (x == NULL)
+    int i = 0, j = 0;
+    char type;
+    while (*(format + j) != '\0')
 	{
-		x = "(nil)";
-		break;
+		type = *(format+j);
+		switch(type)
+		{
+			case 'c':
+			    i = j;
+				j++;
+				break;
+			case 'i':
+			    i = j;
+				j++;
+				break;
+			case 'f':
+			    i = j;
+				j++;
+				break;
+			case 's':
+			    i = j;
+				j++;
+				break;
+			default:
+				j++;
+				break;
+		}	
 	}
-	printf("%s", (char *)x);
+	return i;
+}
+
+void print_comma(int j, int x)
+{
+    if (j != x)
+    {
+        printf(", ");
+    }
+}
+
+char *point_to_nil(char *s)
+{
+	if (s == NULL)
+		s = "(nil)";
+	return (s);
 }
