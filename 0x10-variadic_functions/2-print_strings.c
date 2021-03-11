@@ -9,12 +9,12 @@
  */
 void print_strings(const char *separator, const unsigned int n, ...)
 {
-	int i;
+	unsigned int i;
 	va_list params;
 
+	va_start(params, n);
 	if (n != 0)
 	{
-		va_start(params, n);
 		for (i = 0; i < n; i++)
 		{
 			if (i != n - 1)
