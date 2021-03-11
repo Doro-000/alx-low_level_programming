@@ -9,5 +9,7 @@ void print_numbers(const char *separator, const unsigned int n, ...);
 void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 char *point_to_nil(char *s);
+int filter_format(const char * const format);
+void print_comma(int j, int x);
 
 #endif /*VARIADIC_FUNC*/
