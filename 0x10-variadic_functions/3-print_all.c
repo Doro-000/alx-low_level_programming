@@ -1,34 +1,72 @@
 #include "variadic_functions.h"
 
 /**
- * print_strings - prints strings, followed by a new line
- * @n: number of args passed
- * @separator: string to be printed between strings
+ * print_all - prints anything
+ * @format: list of types of arguments passed to the function
  *
  * Return: void
  */
-void print_strings(const char *separator, const unsigned int n, ...)
+void print_all(const char * const format, ...)
 {
-	int i;
+	int i = 0;
+	void (*f)(void *x);
 	va_list params;
-
-	if (n != 0)
+	typedef struct types_funcs
 	{
-		va_start(params, n);
-		for (i = 0; i < n; i++)
+		char type;
+		void (*func)(void *x);
+	} map;
+	map mappings[] = {
+		{'c', print_char},
+		{'i', print_int},
+		{'f', print_float},
+		{'s', print_str}
+	}
+
+	va_start(params, format);
+	while (*s)
+	{
+		if (*s == mappings[i].type)
 		{
-			if (i != n - 1)
-			{
-				if (separator != NULL)
-					printf("%s%s", point_to_nil(va_arg(params, char *)), separator);
-				else
-					printf("%s", point_to_nil(va_arg(params, char *)));
-			}
-			else
-			{
-				printf("%s", point_to_nil(va_arg(params, char *)));
-			}
+			f = mappings[i].func;
+			f(var_args(params, void *));
+			s++;
+			i = 0;
+			continue;
+		}
+		i++;
+		if (i == 4)
+		{
+			i = 0;
+			s++;
 		}
 	}
 	printf("\n");
+	va_end(params);
+}
+
+
+void print_char(void *x)
+{
+	printf("%c", *(char *)x);
+}
+
+void print_int(void *x)
+{
+	printf("%d", *(int *)x);
+}
+
+void print_float(void *x)
+{
+	printf("%f", *(float *)x);
+}
+
+void print_str(void *x)
+{
+	while (x == NULL)
+	{
+		*(char *)x = "(nil)";
+		break;
+	}
+	printf("%s", *(char *)x);
 }
