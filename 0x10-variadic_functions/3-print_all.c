@@ -8,7 +8,7 @@
  */
 void print_all(const char * const format, ...)
 {
-	int i = 0;
+	int i = 0, j = 0;
 	void (*f)(void *x);
 	va_list params;
 	typedef struct types_funcs
@@ -24,13 +24,13 @@ void print_all(const char * const format, ...)
 	}
 
 	va_start(params, format);
-	while (*s)
+	while (*(format + j))
 	{
-		if (*s == mappings[i].type)
+		if (*format == mappings[i].type)
 		{
 			f = mappings[i].func;
 			f(var_args(params, void *));
-			s++;
+			j++;
 			i = 0;
 			continue;
 		}
@@ -38,7 +38,7 @@ void print_all(const char * const format, ...)
 		if (i == 4)
 		{
 			i = 0;
-			s++;
+			j++;
 		}
 	}
 	printf("\n");
@@ -65,8 +65,8 @@ void print_str(void *x)
 {
 	while (x == NULL)
 	{
-		*(char *)x = "(nil)";
+		x = "(nil)";
 		break;
 	}
-	printf("%s", *(char *)x);
+	printf("%s", (char *)x);
 }
