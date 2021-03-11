@@ -12,14 +12,9 @@ void print_all(const char * const format, ...)
 	char type;
 	va_list params;
 
-	if (format == NULL)
-	{
-		printf("\n");
-		return;
-	}	
 	va_start(params, format);
 	last_arg = count_format(format);
-	while (*(format + j) != '\0')
+	while ((*(format + j) != '\0') && (format != NULL))
 	{
 		type = *(format + j);
 		switch (type)
