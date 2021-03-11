@@ -52,19 +52,19 @@ int filter_format(const char * const format)
 		switch(type)
 		{
 			case 'c':
-			    i = j;
+				i = j;
 				j++;
 				break;
 			case 'i':
-			    i = j;
+				i = j;
 				j++;
 				break;
 			case 'f':
-			    i = j;
+				i = j;
 				j++;
 				break;
 			case 's':
-			    i = j;
+				i = j;
 				j++;
 				break;
 			default:
