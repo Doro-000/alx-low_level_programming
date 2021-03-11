@@ -8,4 +8,14 @@
  */
 int sum_them_all(const unsigned int n, ...)
 {
+	int sum = 0, i;
+	va_list params;
+
+	if (n != 0)
+	{
+		va_start(params, n);
+		for (i = 0; i < n; i++)
+			sum += va_arg(params, int);
+	}
+	return (sum);
 }
