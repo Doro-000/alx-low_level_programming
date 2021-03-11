@@ -2,7 +2,7 @@
 
 void print_all(const char * const format, ...)
 {
-	int i = 0, j = 0, last_arg;
+	int j = 0, last_arg;
 	char type;
 	va_list params;
 
