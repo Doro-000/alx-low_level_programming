@@ -1,18 +1,15 @@
-section .data
-fmt     db "%s",10,0
-msg1    db "Hello",0
+hello: .string "Hello, Holberton\n"
 
-section .text
-    extern printf
-    global main
+      .balign 4
+      .global main
+main: stp  x29, x30, [sp, -16]!
+      mov  x29, sp
 
-main:
-    mov  edx, msg1
-    mov  esi, 1
-    mov  edi, fmt
-    mov  eax, 0
-    call printf
+      adrp x0, hello
+      add  x0, x0, :lo12:hello
+      bl   printf
 
-    mov  ebx, 0
-    mov  eax, 1
-    int  0x80
+      mov  w0, 0
+
+      ldp  x29, x30, [sp], 16
+      ret
