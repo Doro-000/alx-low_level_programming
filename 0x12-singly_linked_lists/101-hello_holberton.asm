@@ -1,12 +1,12 @@
- section .data
+section .data
 fmt     db "%s",10,0
 msg1    db "Hello",0
 
-    section .text
+section .text
     extern printf
-    global _start
+    global _main
 
-_start:
+_main:
     mov  edx, msg1
     mov  esi, 1
     mov  edi, fmt
