@@ -2,8 +2,8 @@
 
 size_t print_list(const list_t *h)
 {
-	const list_t *cursor = h;
-	size_t count;
+	list_t *cursor = h;
+	size_t count = 0;
 
 	while (cursor != NULL)
 	{
