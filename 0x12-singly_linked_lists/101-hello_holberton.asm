@@ -1,15 +1,15 @@
-hello: .string "Hello, Holberton\n"
+section .data:
+      fmt     db "Hello, Holberton",10
 
-      .balign 4
-      .global main
-main: stp  x29, x30, [sp, -16]!
-      mov  x29, sp
+section .text:
+    extern printf
+    global main
 
-      adrp x0, hello
-      add  x0, x0, :lo12:hello
-      bl   printf
+main:
+mov  edi, fmt
+mov  eax, 0
+call printf
 
-      mov  w0, 0
-
-      ldp  x29, x30, [sp], 16
-      ret
+mov  ebx, 0
+mov  eax, 1
+int  0x80
