@@ -1,6 +1,7 @@
 #include "lists.h"
+
 /**
- * get_nodeint_at_index - returns the nth node of a linked list
+ * insert_nodeint_at_index - returns the nth node of a linked list
  * @head: pointer to the head of the list
  * @idx: index of the node to be added
  * @n: content of the new node
