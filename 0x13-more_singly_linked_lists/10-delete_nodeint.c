@@ -1,10 +1,9 @@
 #include "lists.h"
 
 /**
- * insert_nodeint_at_index - returns the nth node of a linked list
+ * delete_nodeint_at_index - deletes a node at an index
  * @head: pointer to the head of the list
  * @idx: index of the node to be added
- * @n: content of the new node
  *
  * Return: the address of the node
  */
@@ -14,7 +13,9 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	listint_t *previous_node = NULL;
 	unsigned int i = 0;
 
-	while ((head != NULL) && (index <= listint_len(*head)))
+	if (index <= listint_len(*head))
+		return (-1);
+	while (head != NULL)
 	{
 		if (i == index)
 		{
@@ -22,7 +23,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 			if (i == 0)
 			{
 				*head = old_node->next;
-				free (old_node);
+				free(old_node);
 				return (1);
 			}
 			previous_node->next = old_node->next;
