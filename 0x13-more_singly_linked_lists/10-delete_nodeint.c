@@ -1,32 +1,57 @@
 #include "lists.h"
 
 /**
- * delete_nodeint_at_index - deletes a node at index
+ * insert_nodeint_at_index - returns the nth node of a linked list
  * @head: pointer to the head of the list
- * @index: index of the node to be deleted
+ * @idx: index of the node to be added
+ * @n: content of the new node
  *
- * Return: 1 on success and -1 on fail
+ * Return: the address of the node
  */
-int delete_nodeint_at_index(listint_t **head, unsigned int index);
+int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	listint_t *temp = NULL;
-	int i = 0;
+	listint_t *old_node = NULL;
+	listint_t *previous_node = NULL;
+	unsigned int i = 0;
 
-	while (head != NULL)
+	while ((head != NULL) && (index <= listint_len(*head)))
 	{
-		if (i <= index)
+		if (i == index)
 		{
-			if ((i + 1) == index)
+			old_node = *head;
+			if (i == 0)
 			{
-				temp = *head;
-				(*head)->next = new_node;
-				break;
+				*head = old_node->next;
+				free (old_node);
+				return (1);
 			}
-			head = &((*head)->next);
-			i++;
+			previous_node->next = old_node->next;
+			free(old_node);
+			return (1);
 		}
-		else
-			return (-1);
+		else if ((i + 1) == index)
+			previous_node = *head;
+		head = &((*head)->next);
+		i++;
 	}
-	return (new_node);
+	return (-1);
+}
+
+/**
+ * listint_len - counts the number of nodes in a linked list
+ * @h: head of the list
+ *
+ * Return: the number of elements
+ */
+size_t listint_len(const listint_t *h)
+{
+	const listint_t *cursor = h;
+	size_t count = 0;
+
+	while (cursor != NULL)
+	{
+		count += 1;
+		cursor = cursor->next;
+	}
+	return (count);
 }
