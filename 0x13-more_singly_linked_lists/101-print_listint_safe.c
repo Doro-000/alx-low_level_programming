@@ -15,7 +15,7 @@ size_t print_listint_safe(const listint_t *head)
 
 	ptrs = malloc(sizeof(listint_t) * list_len);
 	if (ptrs == NULL)
-		exit (98);
+		exit(98);
 	while (cursor == 0)
 	{
 		if (check_ptr(cursor, ptrs, list_len) == 0)
@@ -54,7 +54,7 @@ size_t listint_len(const listint_t *h)
 /**
  * check_ptr - checks if a pointer is in an array
  * @ptr: pointer to be checked
- * @array: array to be checked in 
+ * @array: array to be checked in
  * @size: size of the array
  *
  * Return: 1 on success, 0 on fail
