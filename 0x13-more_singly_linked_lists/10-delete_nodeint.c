@@ -3,7 +3,7 @@
 /**
  * delete_nodeint_at_index - deletes a node at an index
  * @head: pointer to the head of the list
- * @idx: index of the node to be added
+ * @index: index of the node to be added
  *
  * Return: the address of the node
  */
