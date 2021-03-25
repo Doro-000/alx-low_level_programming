@@ -1,12 +1,13 @@
 #include "holberton.h"
 
 /**
- * binary_to_uint - converts a binary to an unsigned int
- * @b: the binary number as a string
+ * clear_bit - sets a bit at a position to 0
+ * @n: number to be used
+ * @index: position to be cleared
  *
- * Return: the converted value
+ * Return: 1 on success, -1 on fail
  */
-int set_bit(unsigned long int *n, unsigned int index)
+int clear_bit(unsigned long int *n, unsigned int index)
 {
 	if (n == NULL || (((1 << index) > *n) && *n))
 		return (-1);
