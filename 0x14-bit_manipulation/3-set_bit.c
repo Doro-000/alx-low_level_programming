@@ -1,10 +1,11 @@
 #include "holberton.h"
 
 /**
- * binary_to_uint - converts a binary to an unsigned int
- * @b: the binary number as a string
+ * set_bit - sets a bit at a position to 1
+ * @n: number to be used
+ * @index: index to be set
  *
- * Return: the converted value
+ * Return: 1 on success, -1 on fail
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
