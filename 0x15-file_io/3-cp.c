@@ -1,22 +1,6 @@
 #include "holberton.h"
 
 /**
- * _strlen - counts string length
- * @str: string to be used
- *
- * Return: length of the string
- */
-int _strlen(char *str)
-{
-	int len = 0;
-
-	while (str[len++] != '\0')
-		;
-	return (len);
-}
-
-
-/**
  * main - copies the content of one file to another
  * @argc: argument count
  * @argv: arguments passed
