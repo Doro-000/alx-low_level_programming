@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		n_read = read(src, buffer, sizeof(buffer));
 		wrote = write(dest, buffer, n_read);
 		check_IO_stat(wrote, -1, argv[2], 'W');
-		if (n_read < sizeof(buffer))
+		if (n_read < 1024)
 			break;
 	}
 	close_src = close(src);
