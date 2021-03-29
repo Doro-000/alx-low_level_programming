@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	check_IO_stat(dest, -1, argv[2], 'W');
 	while ((n_read = read(src, buffer, sizeof(1024))) != 0)
 	{
-		wrote = write(dest, buffer, 1024);
+		wrote = write(dest, buffer, n_read);
 		check_IO_stat(wrote, -1, argv[2], 'W');
 	}
 	close_src = close(src);
