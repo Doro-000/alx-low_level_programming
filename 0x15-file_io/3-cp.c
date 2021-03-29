@@ -24,21 +24,26 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	src = open(argv[1], O_RDONLY);
-	check_IO_stat(src, -1, argv[1], 'O');
+	if (check_IO_stat(src, -1, argv[1], 'O'))
+		exit(98);
 	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	check_IO_stat(dest, -1, argv[2], 'W');
-	while (1)
+	if (check_IO_stat(dest, -1, argv[2], 'W'))
+		exit(99);
+	while (n_read >= 1024)
 	{
 		n_read = read(src, buffer, sizeof(buffer));
+		if (check_IO_stat(src, -1, argv[1], 'O'))
+			exit(98);
 		wrote = write(dest, buffer, n_read);
-		check_IO_stat(wrote, -1, argv[2], 'W');
-		if (n_read < 1024)
-			break;
+		if (check_IO_stat(wrote, -1, argv[2], 'W'))
+			exit(99);
 	}
 	close_src = close(src);
-	check_IO_stat(close_src, src, NULL, 'C');
+	if (check_IO_stat(close_src, src, NULL, 'C'))
+		exit(100);
 	close_dest = close(dest);
-	check_IO_stat(close_dest, dest, NULL, 'C');
+	if (check_IO_stat(close_dest, dest, NULL, 'C'))
+		exit(100);
 	return (1);
 }
 
@@ -49,23 +54,24 @@ int main(int argc, char *argv[])
  * @mode: closing or opening
  * @fd: file descriptor
  *
- * Return: void
+ * Return: 1 if fail, 0 success
  */
-void check_IO_stat(int stat, int fd, char *filename, char mode)
+int check_IO_stat(int stat, int fd, char *filename, char mode)
 {
 	if (mode == 'C' && stat == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
+		return (1);
 	}
 	else if (mode == 'O' && stat == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
-		exit(98);
+		return (1);
 	}
 	else if (mode == 'W' && stat == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
-		exit(99);
+		return (1);
 	}
+	return (0);
 }
