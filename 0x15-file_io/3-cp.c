@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+void check_IO_stat(int stat, int fd, char *filename, char mode);
 /**
  * main - copies the content of one file to another
  * @argc: argument count
@@ -14,7 +15,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int src, dest, n_read, close_src, close_dest, temp;
+	int src, dest, n_read, wrote, close_src, close_dest, temp;
 	char buffer[1024];
 
 	if (argc != 3)
@@ -23,17 +24,9 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	src = open(argv[1], O_RDONLY);
-	if (src == -1)
-	{
-		dprintf(STDERR_FILENO, "%s %s%c", "Error: Can't read from file", argv[1], '\n');
-		exit(98);
-	}
+	check_IO_stat(src, -1, argv[1], 'O');
 	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (dest == -1)
-	{
-		dprintf(STDERR_FILENO, "%s %s%c", "Error: Can't write to", argv[2], '\n');
-		exit(99);
-	}
+	check_IO_stat(dest, -1, argv[2], 'W');
 	while (1)
 	{
 		n_read = read(src, buffer, 1024);
@@ -41,17 +34,45 @@ int main(int argc, char *argv[])
 		{
 			buffer[n_read] = '\0';
 			write(dest, buffer, n_read);
+			check_IO_stat(wrote, -1, argv[2], 'W');
 			break;
 		}
-		write(dest, buffer, 1024);
+		wrote = write(dest, buffer, 1024);
+		check_IO_stat(wrote, -1, argv[2], 'W');
 	}
 	close_src = close(src);
+	check_IO_stat(close_src, src, NULL, 'C');
 	close_dest = close(dest);
-	if (close_src == -1 || close_dest == -1)
-	{
-		temp = (close_src == -1) ? close_src : close_dest;
-		dprintf(STDERR_FILENO, "%s %d%c", "Error: Can't close fd", temp, '\n');
-		exit(100);
-	}
+	check_IO_stat(close_dest, dest, NULL, 'C');
 	return (1);
+}
+
+/**
+ * check_src - checks if a file can be opened or closed
+ * @stat: file descriptor of the file to be opened
+ * @filename: name of the file
+ * @mode: closing or opening
+ *
+ * Return: void
+ */
+void check_IO_stat(int stat, int fd, char *filename, char mode)
+{
+	if (stat == -1)
+	{
+		if (mode == 'C')
+		{
+			dprintf(STDERR_FILENO, "%s %d%c", "Error: Can't close fd", fd, '\n');
+			exit(100);
+		}
+		else if (mode == 'O')
+		{
+			dprintf(STDERR_FILENO, "%s %s%c", "Error: Can't read from file", filename, '\n');
+			exit(98);
+		}
+		else if (mode == 'W')
+		{
+			dprintf(STDERR_FILENO, "%s %s%c", "Error: Can't write to", filename, '\n');
+			exit(99);
+		}
+	}
 }
