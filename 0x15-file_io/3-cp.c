@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int check_IO_stat(int stat, int fd, char *filename, char mode);
+void check_IO_stat(int stat, int fd, char *filename, char mode);
 /**
  * main - copies the content of one file to another
  * @argc: argument count
@@ -24,28 +24,24 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	src = open(argv[1], O_RDONLY);
-	if (check_IO_stat(src, -1, argv[1], 'O'))
-		exit(98);
+	check_IO_stat(src, -1, argv[1], 'O')
 	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (check_IO_stat(dest, -1, argv[2], 'W'))
-		exit(99);
+	check_IO_stat(dest, -1, argv[2], 'W');
 	while (1)
 	{
 		n_read = read(src, buffer, sizeof(buffer));
-		if (check_IO_stat(src, -1, argv[1], 'O'))
-			exit(98);			
+		if (n_read == -1)
+			check_IO_stat(-1, -1, argv[1], 'O')
 		wrote = write(dest, buffer, n_read);
-		if (check_IO_stat(wrote, -1, argv[2], 'W'))
-			exit(99);
+		if (wrote == -1)
+			check_IO_stat(-1, -1, argv[2], 'W')
 		if (n_read < 1024)
 			break;
 	}
 	close_src = close(src);
-	if (check_IO_stat(close_src, src, NULL, 'C'))
-		exit(100);
+	check_IO_stat(close_src, src, NULL, 'C')
 	close_dest = close(dest);
-	if (check_IO_stat(close_dest, dest, NULL, 'C'))
-		exit(100);
+	check_IO_stat(close_dest, dest, NULL, 'C')
 	return (1);
 }
 
@@ -56,24 +52,23 @@ int main(int argc, char *argv[])
  * @mode: closing or opening
  * @fd: file descriptor
  *
- * Return: 1 if fail, 0 success
+ * Return: void
  */
-int check_IO_stat(int stat, int fd, char *filename, char mode)
+void check_IO_stat(int stat, int fd, char *filename, char mode)
 {
 	if (mode == 'C' && stat == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		return (1);
+		exit(100);
 	}
 	else if (mode == 'O' && stat == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
-		return (1);
+		exit(98);
 	}
 	else if (mode == 'W' && stat == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
-		return (1);
+		exit(99);
 	}
-	return (0);
 }
