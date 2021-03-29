@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 	close_dest = close(dest);
 	if (close_src == -1 || close_dest == -1)
 	{
-		temp = (close_src == -1) : close_src ? close_dest;
+		temp = (close_src == -1) ? close_src : close_dest;
 		dprintf(STDERR_FILENO, "%s %d", "Error: Can't close fd", temp);
 		exit(100);
 	}
