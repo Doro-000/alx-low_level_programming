@@ -58,22 +58,19 @@ int main(int argc, char *argv[])
  */
 void check_IO_stat(int stat, int fd, char *filename, char mode)
 {
-	if (stat == -1)
+	if (mode == 'C' && stat == -1)
 	{
-		if (mode == 'C')
-		{
-			dprintf(STDERR_FILENO, "%s %d%c", "Error: Can't close fd", fd, '\n');
-			exit(100);
-		}
-		else if (mode == 'O')
-		{
-			dprintf(STDERR_FILENO, "%s %s%c", "Error: Can't read from file", filename, '\n');
-			exit(98);
-		}
-		else if (mode == 'W')
-		{
-			dprintf(STDERR_FILENO, "%s %s%c", "Error: Can't write to", filename, '\n');
-			exit(99);
-		}
+		dprintf(STDERR_FILENO, "%s %d%c", "Error: Can't close fd", fd, '\n');
+		exit(100);
+	}
+	else if (mode == 'O' && stat == -1)
+	{
+		dprintf(STDERR_FILENO, "%s %s%c", "Error: Can't read from file", filename, '\n');
+		exit(98);
+	}
+	else if (mode == 'W' && stat == -1)
+	{
+		dprintf(STDERR_FILENO, "%s %s%c", "Error: Can't write to", filename, '\n');
+		exit(99);
 	}
 }
