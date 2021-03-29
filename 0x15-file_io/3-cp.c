@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		if (n_read < 1024)
 		{
 			buffer[n_read] = '\0';
-			write(dest, buffer, n_read);
+			wrote = write(dest, buffer, n_read);
 			check_IO_stat(wrote, -1, argv[2], 'W');
 			break;
 		}
