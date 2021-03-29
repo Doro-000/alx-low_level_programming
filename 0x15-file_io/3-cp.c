@@ -14,7 +14,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int src, dest, wrote, n_read, close_src, close_dest, temp
+	int src, dest, n_read, close_src, close_dest, temp;
 	char buffer[1024];
 
 	if (argc != 3)
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "%s %s", "Error: Can't read from file", argv[1]);
 		exit(98);
 	}
-	dest = open(argv[2], O_WRONLY | O_CREATE | O_TRUNC, 0664);
+	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (dest == -1)
 	{
 		dprintf(STDERR_FILENO, "%s %s", "Error: Can't write to", argv[2]);
@@ -49,8 +49,8 @@ int main(int argc, char *argv[])
 	close_dest = close(dest);
 	if (close_src == -1 || close_dest == -1)
 	{
-		temp = close_src == -1 : close_src ? close_dest;
-		dprintf(STDERR_FILENO, "%s %d, "Error: Can't close fd", temp);
+		temp = (close_src == -1) : close_src ? close_dest;
+		dprintf(STDERR_FILENO, "%s %d", "Error: Can't close fd", temp);
 		exit(100);
 	}
 	return (1);
