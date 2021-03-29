@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	check_IO_stat(src, -1, argv[1], 'O');
 	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	check_IO_stat(dest, -1, argv[2], 'W');
-	while (1)
+	while (n_read == 1024)
 	{
 		n_read = read(src, buffer, sizeof(buffer));
 		if (n_read == -1)
@@ -35,8 +35,6 @@ int main(int argc, char *argv[])
 		wrote = write(dest, buffer, n_read);
 		if (wrote == -1)
 			check_IO_stat(-1, -1, argv[2], 'W');
-		if (n_read < 1024)
-			break;
 	}
 	close_src = close(src);
 	check_IO_stat(close_src, src, NULL, 'C');
