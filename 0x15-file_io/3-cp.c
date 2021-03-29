@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 	check_IO_stat(close_src, src, NULL, 'C');
 	close_dest = close(dest);
 	check_IO_stat(close_dest, dest, NULL, 'C');
-	return (1);
+	return (0);
 }
 
 /**
