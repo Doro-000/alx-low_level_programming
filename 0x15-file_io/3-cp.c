@@ -29,14 +29,16 @@ int main(int argc, char *argv[])
 	dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (check_IO_stat(dest, -1, argv[2], 'W'))
 		exit(99);
-	while (n_read >= 1024)
+	while (1)
 	{
 		n_read = read(src, buffer, sizeof(buffer));
 		if (check_IO_stat(src, -1, argv[1], 'O'))
-			exit(98);
+			exit(98);			
 		wrote = write(dest, buffer, n_read);
 		if (check_IO_stat(wrote, -1, argv[2], 'W'))
 			exit(99);
+		if (n_read < 1024)
+			break;
 	}
 	close_src = close(src);
 	if (check_IO_stat(close_src, src, NULL, 'C'))
