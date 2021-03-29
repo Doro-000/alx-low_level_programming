@@ -48,10 +48,11 @@ int main(int argc, char *argv[])
 }
 
 /**
- * check_src - checks if a file can be opened or closed
+ * check_IO_stat - checks if a file can be opened or closed
  * @stat: file descriptor of the file to be opened
  * @filename: name of the file
  * @mode: closing or opening
+ * @fd: file descriptor
  *
  * Return: void
  */
