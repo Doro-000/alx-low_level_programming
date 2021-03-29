@@ -15,7 +15,7 @@ void check_IO_stat(int stat, int fd, char *filename, char mode);
  */
 int main(int argc, char *argv[])
 {
-	int src, dest, n_read, wrote, close_src, close_dest;
+	int src, dest, n_read = 1024, wrote, close_src, close_dest;
 	char buffer[1024];
 
 	if (argc != 3)
