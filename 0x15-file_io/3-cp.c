@@ -1,4 +1,9 @@
-#include "holberton.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 /**
  * main - copies the content of one file to another
