@@ -31,15 +31,17 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (new);
 	}
 	cursor = *h;
-	for (i = 0; i != idx; i++)
-		cursor = cursor->next;
-	if (i == len) /*end of the list*/
+	if (idx == len) /*end of the list*/
 	{
+		while (cursor->next != NULL)
+			cursor = cursor->next;
 		cursor->next = new;
 		new->prev = cursor;
 		new->next = NULL;
 		return (new);
 	}
+	for (i = 0; i != idx; i++)
+		cursor = cursor->next;
 	new->next = cursor;
 	new->prev = cursor->prev;
 	if (cursor == *h) /*beginning of the list*/
