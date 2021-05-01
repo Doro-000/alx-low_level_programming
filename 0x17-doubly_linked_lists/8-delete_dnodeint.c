@@ -13,6 +13,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	unsigned int len, i;
 	dlistint_t *cursor = *head;
 
+	if (head == NULL)
+		return (-1);
 	for (len = 0; cursor != NULL; len++)
 		cursor = cursor->next;
 	if (len == 0 || index >= len)
