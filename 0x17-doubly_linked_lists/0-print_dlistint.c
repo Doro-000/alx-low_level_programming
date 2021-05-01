@@ -8,12 +8,13 @@
  */
 size_t print_dlistint(const dlistint_t *h)
 {
-	int size_t;
+	size_t i = 0;
+	dlistint_t *cursor = h;
 
-	for (i = 0; h != NULL; i++)
+	for (i = 0; cursor != NULL; i++)
 	{
 		printf("%d\n", h->n);
-		h = h->next;
+		cursor = cursor->next;
 	}
 	return (i);
 }
