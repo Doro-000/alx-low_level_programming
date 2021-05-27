@@ -14,12 +14,12 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	hash_table = malloc(sizeof(*hash_table));
 	if (hash_table == NULL)
-		return NULL;
+		return (NULL);
 	bucket = malloc(sizeof(*bucket) * size);
 	if (bucket == NULL)
 	{
-		free(hash_table)
-		return NULL;
+		free(hash_table);
+		return (NULL);
 	}
 	for (i = 0; i < size; i++)
 		bucket[i] = NULL;
