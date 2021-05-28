@@ -20,7 +20,7 @@ void hash_table_print(const hash_table_t *ht)
 		if (ht->array[i] != NULL)
 		{
 			cursor = ht->array[i];
-			while(cursor != NULL)
+			while (cursor != NULL)
 			{
 				keys = realloc(keys, sizeof(*keys) * (current_size + 1));
 				vals = realloc(vals, sizeof(*vals) * (current_size + 1));
