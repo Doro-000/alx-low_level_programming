@@ -35,7 +35,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		cursor = ht->array[index];
 		while (cursor != NULL && strcmp(cursor->key, key) != 0)
-			cursor = cursror->next;
+			cursor = cursor->next;
 		if (cursor != NULL)
 		{
 			free(cursor->value);
