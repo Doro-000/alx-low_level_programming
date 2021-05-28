@@ -6,7 +6,7 @@
  * @key: key to be used, cannot be an empty string
  * @value:  is the value associated with the key
  *
- * Return: index of the key 
+ * Return: index of the key
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
