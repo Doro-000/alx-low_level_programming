@@ -4,6 +4,7 @@
     contains island_perimeter
 """
 
+
 def island_perimeter(grid):
     """
         computes the perimeter of an 'island' in a grid
@@ -11,35 +12,36 @@ def island_perimeter(grid):
         1 represents land zone
         one cell in the grid represents a square piece of land of length 1
     """
-    perimeter_perland = 4
+    tile_perimeter = 4
     total_permimeter = 0
-    for y in range(len(grid)):
-        for x in range(len(grid[y])):
-            if grid[y][x] == 1:
-                total_permimeter += perimeter_perland
-                intersections = get_intersections(x, y, grid)
-                total_permimeter -= intersections
+    for row in range(len(grid)):
+        for col in range(len(grid[row])):
+            if grid[row][col] == 1:
+                total_permimeter += tile_perimeter
+                borders = get_borders(col, row, grid)
+                total_permimeter -= borders
     return total_permimeter
 
-def get_intersections(x, y, grid):
+
+def get_borders(col, row, grid):
     """
-        returns the number intersection of a cell with it's neighboring cells
+        returns the border of a cell with it's neighboring cells
     """
-    vertical_intersections = 0
-    horizontal_intersections = 0
-    if (y - 1) >= 0:
-        if grid[y - 1][x]:
-            vertical_intersections += 1
-    if (y + 1) < len(grid):
-        if grid[y + 1][x]:
-            vertical_intersections += 1
-    if (x - 1) >= 0:
-        if grid[y][x - 1]:
-            horizontal_intersections += 1
-    if (x + 1) < len(grid[y]):
-        if grid[y][x + 1]:
-            horizontal_intersections += 1
-    return vertical_intersections + horizontal_intersections
+    vertical_borders = 0
+    horizontal_borders = 0
+    if (row - 1) >= 0:
+        if grid[row - 1][col]:
+            vertical_borders += 1
+    if (row + 1) < len(grid):
+        if grid[row + 1][col]:
+            vertical_borders += 1
+    if (col - 1) >= 0:
+        if grid[row][col - 1]:
+            horizontal_borders += 1
+    if (col + 1) < len(grid[row]):
+        if grid[row][col + 1]:
+            horizontal_borders += 1
+    return vertical_borders + horizontal_borders
 
 if __name__ == "__main__":
     grid = [
