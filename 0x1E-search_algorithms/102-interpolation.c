@@ -30,8 +30,18 @@ int interpolation_search(int *array, size_t size, int value)
 	return (-1);
 }
 
-
+/**
+ * get_pos - applies linear interpolation formula
+ * @array: array to be used
+ * @low: lowest index in the array to be used
+ * @high: highest index in the array to be used
+ * @value: value being searched
+ *
+ * Return: probable position of value
+ */
 size_t get_pos(int *array, int low, int high, int value)
 {
-	return (low + (((double)(high - low) / (array[high] - array[low])) * (value - array[low])));
+	double slope_r = ((double)(high - low) / (array[high] - array[low]));
+
+	return (low + (slope_r * (value - array[low])));
 }
