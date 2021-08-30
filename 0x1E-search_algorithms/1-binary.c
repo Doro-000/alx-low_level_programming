@@ -30,7 +30,7 @@ int binary_search(int *array, size_t size, int value)
 			return (0);
 		else
 			return (-1);
-	}	
+	}
 
 	if (size % 2 == 0)
 		mid = (size / 2) - 1;
