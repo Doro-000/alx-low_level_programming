@@ -50,6 +50,7 @@ int advanced_binary(int *array, size_t size, int value)
 	else if (array[mid] < value)
 	{
 		int temp = advanced_binary(array + mid + 1, size / 2, value);
+
 		if (temp != -1)
 			return (temp + (mid + 1));
 		else
