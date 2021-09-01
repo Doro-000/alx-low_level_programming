@@ -11,7 +11,7 @@
 int advanced_binary(int *array, size_t size, int value)
 {
 	size_t i;
-	int mid;
+	int mid, temp;
 
 	if (array == NULL)
 		return (-1);
@@ -45,17 +45,15 @@ int advanced_binary(int *array, size_t size, int value)
 	else
 		mid = size / 2;
 
-	if (array[mid] > value)
+	if (array[mid] >= value)
 		return (advanced_binary(array, size / 2, value));
-	else if (array[mid] < value)
+	if (array[mid] < value)
 	{
-		int temp = advanced_binary(array + mid + 1, size / 2, value);
+		temp = advanced_binary(array + mid + 1, size / 2, value);
 
 		if (temp != -1)
 			return (temp + (mid + 1));
 		else
 			return (-1);
 	}
-	else
-		return (advanced_binary(array, size / 2 + 1, value));
 }
