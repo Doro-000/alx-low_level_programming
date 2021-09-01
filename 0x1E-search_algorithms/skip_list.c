@@ -1,5 +1,6 @@
 #include "search_algos.h"
 #include <stdlib.h>
+#include <math.h>
 
 /**
  * init_express - Initializes the express lane of the linked list
