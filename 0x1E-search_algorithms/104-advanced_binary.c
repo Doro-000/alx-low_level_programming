@@ -44,6 +44,12 @@ int advanced_binary(int *array, size_t size, int value)
 			return (-1);
 	}
 	if (array[mid] == value)
-		return (advanced_binary(array, (size / 2) + 1, value));
+	{
+		temp = advanced_binary(array + mid, size / 2, value);
+		if (temp != -1)
+			return (temp + mid);
+		else
+			return (-1);
+	}		
 	return (-1);
 }
