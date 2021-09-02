@@ -38,7 +38,7 @@ int advanced_binary(int *array, size_t size, int value)
 	if (array[mid] < value)
 	{
 		temp = advanced_binary(array + mid + 1, size / 2, value);
-		return temp != -1 ? temp + (mid + 1) : -1;
+		return (temp != -1 ? temp + (mid + 1) : -1);
 	}
 	return (-1);
 }
