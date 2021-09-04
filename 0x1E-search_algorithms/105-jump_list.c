@@ -25,10 +25,9 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		if (cursorL->n >= value)
 			break;
 		for (i = 0; i < jump && cursorL != NULL; i++)
-		{
 			cursorL = cursorL->next;
-			cursorF = cursorF->next;
-		}
+		for (i = 0; i < jump; i++)
+		cursorF = cursorF->next;
 	}
 	if (cursorL == NULL)
 	{
